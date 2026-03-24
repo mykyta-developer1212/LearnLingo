@@ -1,0 +1,76 @@
+.heroContainer {
+    max-width: 1342px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.hero {
+    margin-top: 20px;
+    display: flex;
+    gap: 24px;
+}
+
+.heroInfo {
+    background-color: var(--light-gray);
+    border-radius: 30px;
+    padding: 98px 108px 98px 64px;
+}
+
+.heroInfo h1 {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: var(--dark-light);
+}
+
+.heroInfo h1 span {
+    position: relative;
+    display: inline-block;
+    width: 195px;
+    height: 40px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 40px;
+    z-index: 1;
+    text-align: center;
+}
+
+.heroInfo h1 span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--light-yellow);
+    border-radius: 8px;
+    z-index: -1;
+}
+
+.heroInfo p {
+    margin-top: 32px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 138%;
+    letter-spacing: -0.02em;
+    color: var(--dark-light);
+}
+
+.heroButton {
+    display: inline-block;
+    margin-top: 64px;
+    border-radius: 12px;
+    padding: 16px 88px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    color: var(--dark-light);
+    background-color: var(--dark-yellow);
+    transition: background-color 0.24s ease;
+}
+
+.heroButton:hover {
+    background-color: var(--light-pale-yellow);
+}

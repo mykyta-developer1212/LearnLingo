@@ -1,0 +1,29 @@
+.cardWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.loadMoreWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.loadMoreBtn {
+    background-color: var(--dark-yellow);
+    border: none;
+    padding: 16px 48px;
+    border-radius: 12px;
+    transition: background-color 0.24s ease;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.56;
+    color: var(--dark-light);
+    margin-bottom: 96px;
+}
+
+.loadMoreBtn:hover {
+    background-color: var(--light-pale-yellow);
+}

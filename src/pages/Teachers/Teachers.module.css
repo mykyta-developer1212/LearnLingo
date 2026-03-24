@@ -1,0 +1,12 @@
+.teacherWrapper {
+    background-color: var(--light-gray);
+    min-width: 100vh;
+    min-height: 100vb;
+}
+
+.container {
+    max-width: 1214px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}

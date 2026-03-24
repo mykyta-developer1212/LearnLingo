@@ -1,0 +1,274 @@
+.card {
+  background-color: var(--white);
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.cardWrapper {
+  display: flex;
+  gap: 48px;
+}
+
+.cardHeader {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: flex-start;
+}
+
+.teacherAvatarWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.teacherAvatarWrapper::after {
+  content: "";
+  position: absolute;
+  top: 19px;
+  right: 23px;
+  width: 8px;
+  height: 8px;
+  background-color: #38CD3E;
+  border: 2px solid var(--white);
+  border-radius: 100px;
+}
+
+.teacherAvatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  padding: 9px;
+  border: 3px solid var(--light-yellow);
+  box-shadow: inset 0 0 0 9px var(--white);
+  flex-shrink: 0;
+}
+
+.teacherContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.tutorHeader h3 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.tutorHeader h2 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--dark-light);
+  margin-top: 8px;
+}
+
+.teacherStatistic {
+  display: flex;
+  gap: 32px;
+  margin-left: auto;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  position: relative;
+  padding-right: 16px;
+}
+
+.teacherStatistic li {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--dark-light);
+  gap: 8px;
+}
+
+.teacherStatistic {
+  display: flex;
+  gap: 32px;
+}
+
+.teacherStatistic li {
+  position: relative;
+}
+
+.teacherStatistic li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -16px; 
+  transform: translateY(-50%);
+  width: 1px;
+  height: 16px;
+  background-color: var(--gray-white);
+}
+
+.itemLesson {
+  display: flex;
+  align-items: center;
+}
+
+.lessonsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconBook {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+.itemRating {
+  display: flex;
+  align-items: center;
+}
+
+.iconStar {
+  color: #FFC531;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+.thirtyMoneyValue {
+  color: #38CD3E;
+}
+
+.heartWrapper {
+  margin-left: 64px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.iconHeart {
+  width: 26px;
+  height: 26px;
+  fill: var(--white);
+  stroke: var(--dark-light);
+  transition: 0.3s;
+}
+
+.activeHeart {
+  color: var(--light-pale-yellow);
+  stroke: var(--light-pale-yellow);
+  fill: var(--light-pale-yellow);
+}
+
+.teacherInfo {
+  margin-top: 32px;
+}
+
+.infoLabel {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.readMoreBtn {
+  margin-top: 16px;
+  border: none;
+  background-color: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+}
+
+.infoValue {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;  
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--dark-light); 
+}
+
+.experienceInfo {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--dark-light);
+  margin-bottom: 32px;
+  margin-top: 16px;
+}
+
+.reviewInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.reviewName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.commentReview {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--dark-light);
+  margin-top: 16px;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.teacherLevelList {
+  display: flex;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.teacherLevel {
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  text-align: center;
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--dark-light);
+}
+
+.activeLevel {
+  background: var(--dark-yellow);
+  border: none;
+}
+
+.bookLessonBtn {
+  align-self: flex-start;
+  margin-top: 32px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--dark-yellow);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.56;
+  color: var(--dark-light);
+  padding: 16px 48px;
+  transition: background-color 0.24s ease;
+  cursor: pointer;
+} 
+
+.bookLessonBtn:hover {
+  background-color: var(--light-pale-yellow);
+}

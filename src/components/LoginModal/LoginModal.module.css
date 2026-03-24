@@ -1,0 +1,97 @@
+.loginWrapper {
+    width: 566px;
+    padding: 0 64px 64px 64px;
+}
+
+.loginInfo {
+    margin-top: 12px;
+}
+
+.loginInfo h1 {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--dark-light);
+}
+
+.loginInfo p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.38;
+    color: var(--dark-light);
+    margin-top: 20px;
+}
+
+.loginForm {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.field {
+    position: relative;
+}
+
+.error {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    font-size: 12px;
+    color: var(--red);
+}
+
+.errorInput {
+    border: 1px solid var(--red) !important;
+}
+
+.loginInput {
+    border: 1px solid var(--light-pale-gray);
+    border-radius: 12px;
+    padding: 16px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.38%;
+    color: var(--dark-light);    
+}
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.iconLogin {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.loginForm input::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.38%;
+    color: var(--dark-light);
+}
+
+.loginBtn {
+    background-color: var(--dark-yellow);
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.56;
+    color: var(--dark-light);
+    margin-top: 40px;
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 16px 0;
+    cursor: pointer;
+    transition: background-color 0.24s ease;
+}
+
+.loginBtn:hover {
+    background-color: var(--light-pale-yellow);
+}

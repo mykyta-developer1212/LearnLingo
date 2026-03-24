@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.selectLevel {
+    width: 198px;
+}
+
+.selectLevel span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.selectPrice {
+    width: 124px;
+}
+
+.option {
+    white-space: pre-line;
+    word-break: break-word;
+}

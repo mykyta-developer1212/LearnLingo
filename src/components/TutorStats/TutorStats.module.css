@@ -1,0 +1,61 @@
+.tutorStats {
+  margin-top: 24px;
+}
+
+.containerTutorStats {
+  max-width: 1342px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 24px;
+}
+
+.wrapperTutorStats {
+  position: relative;
+  width: 1312px;
+  margin: 0 auto;
+  height: 116px;
+  display: flex;
+  align-items: center;
+}
+
+.border {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.list {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  width: 1067px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.list li span {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  color: var(--dark-light);
+  flex-shrink: 0;
+}
+
+.list li p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: rgba(18, 20, 23, 0.7);
+  max-width: 150px;
+  white-space: pre-line;
+}

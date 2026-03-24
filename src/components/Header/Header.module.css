@@ -1,0 +1,82 @@
+.header {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.headerContainer {
+    max-width: 1214px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.logo {
+    flex: 1;
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logoText {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    color: var(--dark-light);
+}
+
+.menuList {
+    display: flex;
+    gap: 28px;
+}
+
+.menuList li {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--dark-light);
+}
+
+.buttonList {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.loginButtonWrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logoLoginWrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.loginButton {
+    all: unset;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--dark-light);
+    cursor: pointer;
+}
+
+.registerButton {
+    all: unset;
+    background-color: var(--dark-light);
+    border-radius: 12px;
+    padding: 14px 39px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--white);
+    cursor: pointer;
+}
