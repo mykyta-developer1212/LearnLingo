@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "./AuthProvider";
+import { useAuth } from "../useAuth";
 
 export default function ProtectedRoute({
   children,
@@ -8,10 +9,15 @@ export default function ProtectedRoute({
 }) {
   const { user, loading, openLoginModal } = useAuth();
 
+  useEffect(() => {
+    if (!loading && !user) {
+      openLoginModal();
+    }
+  }, [loading, user, openLoginModal]);
+
   if (loading) return <p>Loading...</p>;
 
   if (!user) {
-    openLoginModal(); 
     return <Navigate to="/" replace />;
   }
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Teacher } from "../../types/teacher";
 import style from "./TeachersCard.module.css";
-import { useAuth } from "../AuthProvider";
+import { useAuth } from "../../useAuth";
 import { toast } from "react-toastify";
 
 type Props = {
