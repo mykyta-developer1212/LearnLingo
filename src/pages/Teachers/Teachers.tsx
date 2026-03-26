@@ -36,10 +36,7 @@ export default function Teachers() {
 
       {selectedTeacher && (
         <Modal onClose={closeModal}>
-          <TeacherModal
-            teacher={selectedTeacher}
-            onClose={closeModal}
-          />
+          <TeacherModal teacher={selectedTeacher} onClose={closeModal} />
         </Modal>
       )}
     </>
