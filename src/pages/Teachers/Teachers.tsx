@@ -5,6 +5,7 @@ import Modal from "../../components/Modal/Modal";
 import TeacherModal from "../../components/TeacherModal/TeacherModal";
 import type { Teacher } from "../../types/teacher";
 import style from "./Teachers.module.css";
+import Navigation from "../../components/Navigation/Navigation";
 
 type FiltersState = {
   language: string;
@@ -27,6 +28,7 @@ export default function Teachers() {
     <>
       <div className={style.teacherWrapper}>
         <div className={style.container}>
+          <Navigation />
           <TeachersFilter filters={filters} setFilters={setFilters} />
           <TeachersList filters={filters} onContact={setSelectedTeacher} />
         </div>

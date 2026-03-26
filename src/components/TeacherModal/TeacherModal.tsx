@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import type { Teacher } from "../../types/teacher";
 import style from "./TeacherModal.module.css";
+import SuccessModal from "../SuccessModal/SuccessModal";
 
 interface Props {
   teacher: Teacher;
@@ -23,10 +24,9 @@ const defaultForm: FormState = {
   phone: "",
 };
 
-export default function TeacherModal({ teacher, onClose }: Props) {
+export default function TeacherModal({ teacher }: Props) {
   const [form, setForm] = useState<FormState>(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-
     if (saved) {
       try {
         return JSON.parse(saved);
@@ -34,11 +34,11 @@ export default function TeacherModal({ teacher, onClose }: Props) {
         return defaultForm;
       }
     }
-
     return defaultForm;
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false); 
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(form));
@@ -46,18 +46,13 @@ export default function TeacherModal({ teacher, onClose }: Props) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const isInvalid = (value: string) => value.trim() === "";
 
   const getError = (field: keyof FormState) => {
     if (!submitted) return "";
-
     switch (field) {
       case "name":
         return isInvalid(form.name) ? "Full name is required" : "";
@@ -66,9 +61,7 @@ export default function TeacherModal({ teacher, onClose }: Props) {
       case "phone":
         return isInvalid(form.phone) ? "Phone number is required" : "";
       case "reason":
-        return isInvalid(form.reason)
-          ? "Please select a reason"
-          : "";
+        return isInvalid(form.reason) ? "Please select a reason" : "";
       default:
         return "";
     }
@@ -80,19 +73,20 @@ export default function TeacherModal({ teacher, onClose }: Props) {
 
     const hasError =
       !form.name || !form.email || !form.phone || !form.reason;
-
     if (hasError) return;
 
-    console.log("Sending:", {
-      ...form,
-      teacherId: teacher.id,
-    });
+    console.log("Sending:", { ...form, teacherId: teacher.id });
 
     localStorage.removeItem(STORAGE_KEY);
     setForm(defaultForm);
     setSubmitted(false);
-    onClose();
+
+    setIsSuccess(true); 
   };
+
+  if (isSuccess) {
+    return <SuccessModal />;
+  }
 
   return (
     <form className={style.containerTeacherModal} onSubmit={handleSubmit}>
@@ -111,7 +105,6 @@ export default function TeacherModal({ teacher, onClose }: Props) {
           src={teacher.avatar_url}
           alt={teacher.name}
         />
-
         <div>
           <h3 className={style.teacherLabel}>Your teacher</h3>
           <h2 className={style.teacherName}>
@@ -119,16 +112,12 @@ export default function TeacherModal({ teacher, onClose }: Props) {
           </h2>
         </div>
       </div>
-      
+
       <div className={style.learningReason}>
         <h2 className={style.lessonReasonQuestion}>
           What is your main reason for learning English?
         </h2>
-
-        {getError("reason") && (
-          <span className={style.error}>{getError("reason")}</span>
-        )}
-
+        {getError("reason") && <span className={style.error}>{getError("reason")}</span>}
         <ul className={style.reasonOption}>
           {[
             { value: "career", label: "Career and business" },
@@ -161,13 +150,9 @@ export default function TeacherModal({ teacher, onClose }: Props) {
             placeholder="Full Name"
             value={form.name}
             onChange={handleChange}
-            className={`${style.input} ${
-              submitted && isInvalid(form.name) ? style.errorInput : ""
-            }`}
+            className={`${style.input} ${submitted && isInvalid(form.name) ? style.errorInput : ""}`}
           />
-          {getError("name") && (
-            <span className={style.error}>{getError("name")}</span>
-          )}
+          {getError("name") && <span className={style.error}>{getError("name")}</span>}
         </div>
 
         <div className={style.field}>
@@ -176,13 +161,9 @@ export default function TeacherModal({ teacher, onClose }: Props) {
             placeholder="Email"
             value={form.email}
             onChange={handleChange}
-            className={`${style.input} ${
-              submitted && isInvalid(form.email) ? style.errorInput : ""
-            }`}
+            className={`${style.input} ${submitted && isInvalid(form.email) ? style.errorInput : ""}`}
           />
-          {getError("email") && (
-            <span className={style.error}>{getError("email")}</span>
-          )}
+          {getError("email") && <span className={style.error}>{getError("email")}</span>}
         </div>
 
         <div className={style.field}>
@@ -191,13 +172,9 @@ export default function TeacherModal({ teacher, onClose }: Props) {
             placeholder="Phone number"
             value={form.phone}
             onChange={handleChange}
-            className={`${style.input} ${
-              submitted && isInvalid(form.phone) ? style.errorInput : ""
-            }`}
+            className={`${style.input} ${submitted && isInvalid(form.phone) ? style.errorInput : ""}`}
           />
-          {getError("phone") && (
-            <span className={style.error}>{getError("phone")}</span>
-          )}
+          {getError("phone") && <span className={style.error}>{getError("phone")}</span>}
         </div>
       </div>
 

@@ -5,6 +5,8 @@ import Modal from "../../components/Modal/Modal";
 import TeacherModal from "../../components/TeacherModal/TeacherModal";
 import type { Teacher } from "../../types/teacher";
 import style from "./Favorites.module.css";
+import Navigation from "../../components/Navigation/Navigation";
+import { useAuth } from "../../useAuth";
 
 type FiltersState = {
   language: string;
@@ -13,11 +15,9 @@ type FiltersState = {
 };
 
 export default function FavoritesPage() {
-  const [favorites, setFavorites] = useState<Teacher[]>(() => {
-    const saved = localStorage.getItem("favoriteTeachers");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const { user } = useAuth();
 
+  const [favorites, setFavorites] = useState<Teacher[]>([]);
   const [selectedTeacher, setSelectedTeacher] = useState<Teacher | null>(null);
 
   const [filters, setFilters] = useState<FiltersState>({
@@ -26,38 +26,35 @@ export default function FavoritesPage() {
     price: "",
   });
 
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const saved = localStorage.getItem("favoriteTeachers");
-      setFavorites(saved ? JSON.parse(saved) : []);
-    };
+  const storageKey = user ? `favoriteTeachers_${user.uid}` : null;
 
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
+  useEffect(() => {
+    if (!user) {
+      setTimeout(() => setFavorites([]), 0);
+    } else if (storageKey) {
+      const saved = localStorage.getItem(storageKey);
+      setTimeout(() => setFavorites(saved ? JSON.parse(saved) : []), 0);
+    }
+  }, [user, storageKey]);
 
   const toggleFavorite = (teacher: Teacher) => {
-    const exists = favorites.find((t) => t.id === teacher.id);
+    if (!user || !storageKey) return;
 
+    const exists = favorites.find((t) => t.id === teacher.id);
     const updated = exists
       ? favorites.filter((t) => t.id !== teacher.id)
       : [...favorites, teacher];
 
-    localStorage.setItem("favoriteTeachers", JSON.stringify(updated));
+    localStorage.setItem(storageKey, JSON.stringify(updated));
     setFavorites(updated);
   };
 
   const filtered = favorites.filter((t) => {
-    const lang = filters.language
-      ? t.languages.includes(filters.language)
-      : true;
-
+    const lang = filters.language ? t.languages.includes(filters.language) : true;
     const level = filters.level ? t.levels.includes(filters.level) : true;
-
     const price = filters.price
       ? t.price_per_hour === Number(filters.price.replace(" $", ""))
       : true;
-
     return lang && level && price;
   });
 
@@ -67,30 +64,31 @@ export default function FavoritesPage() {
     <>
       <div className={style.wrapper}>
         <div className={style.container}>
-            <TeachersFilter filters={filters} setFilters={setFilters}/>
-            <div className={style.cardWrapper}>
-              {filtered.map((teacher) => (
-                <TeachersCard
-                  key={teacher.id}
-                  teacher={teacher}
-                  selectedLevel={filters.level}
-                  onContact={setSelectedTeacher}
-                  onToggleFavorite={toggleFavorite}
-                  isFavorite={favorites.some((t) => t.id === teacher.id)}
-                />
-              ))}
-            </div>
-
-            {selectedTeacher && (
-              <Modal onClose={() => setSelectedTeacher(null)}>
-                <TeacherModal
-                  teacher={selectedTeacher}
-                  onClose={() => setSelectedTeacher(null)}
-                />
-              </Modal>
-            )}
+          <Navigation />
+          <TeachersFilter filters={filters} setFilters={setFilters} />
+          <div className={style.cardWrapper}>
+            {filtered.map((teacher) => (
+              <TeachersCard
+                key={teacher.id}
+                teacher={teacher}
+                selectedLevel={filters.level}
+                onContact={setSelectedTeacher}
+                onToggleFavorite={toggleFavorite}
+                isFavorite={favorites.some((t) => t.id === teacher.id)}
+              />
+            ))}
           </div>
+
+          {selectedTeacher && (
+            <Modal onClose={() => setSelectedTeacher(null)}>
+              <TeacherModal
+                teacher={selectedTeacher}
+                onClose={() => setSelectedTeacher(null)}
+              />
+            </Modal>
+          )}
         </div>
+      </div>
     </>
   );
 }
