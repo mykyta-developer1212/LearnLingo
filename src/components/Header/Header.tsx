@@ -32,6 +32,11 @@ export default function Header() {
             <ul className={style.menuList}>
               <NavLink to="/"><li>Home</li></NavLink>
               <NavLink to="/teachers"><li>Teachers</li></NavLink>
+               {user && (
+                <NavLink to="/favorites">
+                  <li>Favorites</li>
+                </NavLink>
+              )}
             </ul>
           </nav>
 

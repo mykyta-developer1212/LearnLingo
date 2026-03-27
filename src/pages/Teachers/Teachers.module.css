@@ -1,7 +1,7 @@
 .teacherWrapper {
     background-color: var(--light-gray);
     min-width: 100vh;
-    min-height: 100vb;
+    padding-top: 20px;
 }
 
 .container {

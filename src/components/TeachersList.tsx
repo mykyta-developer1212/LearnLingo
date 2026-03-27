@@ -26,7 +26,6 @@ export default function TeachersList({ filters, onContact }: Props) {
 
   const storageKey = user ? `favoriteTeachers_${user.uid}` : null;
 
-  // Firebase підписка на всі картки
   useEffect(() => {
     const teachersRef = ref(db, "/");
 
@@ -48,7 +47,6 @@ export default function TeachersList({ filters, onContact }: Props) {
     return () => unsubscribe();
   }, []);
 
-  // Завантаження favorites після login/logout (асинхронно)
   useEffect(() => {
     if (!user) {
       setTimeout(() => setFavorites([]), 0);

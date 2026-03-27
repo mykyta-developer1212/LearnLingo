@@ -5,8 +5,8 @@ import Modal from "../../components/Modal/Modal";
 import TeacherModal from "../../components/TeacherModal/TeacherModal";
 import type { Teacher } from "../../types/teacher";
 import style from "./Favorites.module.css";
-import Navigation from "../../components/Navigation/Navigation";
 import { useAuth } from "../../useAuth";
+import Header from "../../components/Header/Header";
 
 type FiltersState = {
   language: string;
@@ -58,13 +58,12 @@ export default function FavoritesPage() {
     return lang && level && price;
   });
 
-  if (!favorites.length) return <p>No favorite teachers yet</p>;
 
   return (
     <>
       <div className={style.wrapper}>
         <div className={style.container}>
-          <Navigation />
+          <Header />
           <TeachersFilter filters={filters} setFilters={setFilters} />
           <div className={style.cardWrapper}>
             {filtered.map((teacher) => (
